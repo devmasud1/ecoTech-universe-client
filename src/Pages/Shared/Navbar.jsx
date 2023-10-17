@@ -55,8 +55,6 @@ const Navbar = () => {
               <span className="text-rose-700 font-bold">U</span>niverse
             </p>
           </div>
-
-          {/* <a className=" text-xl font-bold">Coffee shop</a> */}
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItem}</ul>
