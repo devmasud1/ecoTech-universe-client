@@ -13,7 +13,7 @@ const Brand = () => {
   return (
     <div className="max-w-[1440px] mx-auto my-16">
       <h1 className="text-center text-3xl font-bold mx-auto">Our Top Brand</h1>
-      <hr className="w-28 h-1 bg-orange-500 text-center mx-auto mt-2 mb-5" />
+      <hr className="w-28 h-1 bg-orange-500 text-center mx-auto mt-2 mb-8" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0 gap-8 lg:gap-10">
         {brandInfo.map((brand) => (
