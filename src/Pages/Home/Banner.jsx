@@ -7,19 +7,20 @@ const Banner = () => {
       }}
     >
       <div className="absolute inset-0 bg-black opacity-80"></div>
-      <div className="w-1/2 mx-auto text-white absolute inset-0 flex flex-col   justify-center space-y-6">
-        <h1 className="text-4xl font-bold w-full">
-          <span className="text-5xl">Your Tech </span> <br /> Wonderland for
-          Premium Product
+      <div className="w-11/12 mx-auto text-white absolute inset-0 flex flex-col justify-center space-y-4 lg:w-2/3 xl:w-1/2">
+        <h1 className="text-3xl font-bold lg:text-4xl">
+          <span className="text-4xl lg:text-5xl text-slate-300">Your Tech</span>{" "}
+          <br />
+          Wonderland for Premium Products
         </h1>
-        <p className="space-y-3">
+        <p className="text-sm sm:text-base text-slate-200">
           Discover a world of tech wonders where the latest gadgets and
           innovations await. We bring you an exclusive selection of top-tier
           tech products that redefine convenience and performance. Explore our
           collection and embark on a journey to upgrade your digital lifestyle.
-          Welcome to the ultimate tech shopping destination
+          Welcome to the ultimate tech shopping destination.
         </p>
-        <button className="w-[120px] bg-red-200 px-6 py-1 rounded-tl-xl rounded-br-lg  text-black font-medium text-lg hover:bg-black hover:text-white transition-all duration-3000 ease-in">
+        <button className="w-[120px] bg-red-200 px-4 py-1 rounded-tl-lg rounded-br-lg text-black font-medium text-base hover:bg-black hover:text-white transition-all duration-300">
           Explore
         </button>
       </div>
