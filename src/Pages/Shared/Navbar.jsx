@@ -66,7 +66,7 @@ const Navbar = () => {
             </div>
           </label>
           <div>
-            <Link className="px-6 py-1 bg-[#706F6F] text-white rounded">
+            <Link to="/logIn" className="px-6 py-1 bg-[#706F6F] text-white rounded">
               LogIn
             </Link>
           </div>
