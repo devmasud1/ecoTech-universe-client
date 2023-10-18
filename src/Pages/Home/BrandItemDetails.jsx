@@ -1,6 +1,7 @@
 import Rating from "react-rating";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { BsArrow90DegLeft } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 const BrandItemDetails = () => {
   const navigate = useNavigate();
@@ -10,7 +11,21 @@ const BrandItemDetails = () => {
   const ratingNum = parseFloat(rating);
 
   const handleAddToCart = (productDetailsData) => {
-    console.log(productDetailsData);
+   // console.log(productDetailsData);
+
+    fetch(`https://eco-tech-universe-server.vercel.app/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productDetailsData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire('product successfully added!')
+        }
+      });
   };
 
   const handlePre = () => {
