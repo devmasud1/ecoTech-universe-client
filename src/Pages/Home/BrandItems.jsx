@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { Link, useParams } from "react-router-dom";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Pagination from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 const BrandItems = () => {
   const [allProduct, setAllProduct] = useState([]);
@@ -27,34 +26,43 @@ const BrandItems = () => {
 
   return (
     <div>
-      <div className="h-[60vh] ">
-        <Swiper
-          pagination={{
-            dynamicBullets: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          {filterProduct.map((pd) => (
-            <SwiperSlide
-              key={pd._id}
-              style={{ backgroundImage: `url(${pd.image})` }}
-            >
-              <div className="flex justify-center items-center h-full text-white ">
-                <div className="bg-slate-400 p-20">
-                  <h1 className="text-3xl lg:text-4xl mb-2">{pd.name}</h1>
-                  <h1 className="text-xl text-blue-100">
-                    <span className="text-3xl lg:text-4xl text-orange-200 font-bold">
-                      10%
-                    </span>{" "}
-                    Discount for all products
-                  </h1>
+      <div>
+        <div className="h-[70vh]">
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {filterProduct.map((pd) => (
+              <SwiperSlide
+                key={pd._id}
+                className="bg-center bg-cover"
+                style={{
+                  backgroundImage: `url(${pd.image})`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <div className="flex justify-center items-center h-full text-blue-800">
+                  <div className="bg-slate-400 bg-opacity-50 p-10 sm:p-12 md:p-16">
+                    <h1 className="text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2">
+                      {pd.name}
+                    </h1>
+                    <h1 className="text-base font-semibold sm:text-lg md:text-xl lg:text-2xl text-slate-800">
+                      <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-orange-800 font-bold">
+                        10%
+                      </span>{" "}
+                      Discount for all products
+                    </h1>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
+
       <div className="max-w-[1440px] min-h-[60vh] mx-auto my-10">
         {filterProduct.length ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 mx-5 lg:mx-0">
@@ -67,10 +75,10 @@ const BrandItems = () => {
                   <img
                     src={pd.image}
                     alt=""
-                    className="w-full h-[310px] object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="w-1/2 p-4 text-lg">
+                <div className="w-1/2 p-4 text-lg space-y-2">
                   <h2>Brand: {pd.brand}</h2>
                   <p>Name: {pd.name}</p>
                   <p>Type: {pd.type}</p>
@@ -85,15 +93,14 @@ const BrandItems = () => {
                   </p>
                   <p>Price: ${pd.price}</p>
                   <p>Description: {pd.description}</p>
-                  <div className="flex items-center gap-5 py-4">
-                    <Link to={`/productDetails/${pd._id}`}>
+
+                  <div className="flex flex-col lg:flex-row w-full items-center gap-5 pt-5">
+                    <Link to={`/productDetails/${pd._id}`} className="w-full">
                       <button className="btn btn-neutral">view details</button>
                     </Link>
 
-                    <Link to={`/productUpdate/${pd._id}`}>
-                      <button className="btn btn-secondary">
-                        update product
-                      </button>
+                    <Link to={`/productUpdate/${pd._id}`} className="w-full">
+                      <button className="btn btn-accent">update product</button>
                     </Link>
                   </div>
                 </div>
