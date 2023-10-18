@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div className="">
-      <div className="bg-base-200 ">
+      <div className="bg-base-200">
         <footer className="max-w-[1440px] mx-auto footer p-4 lg:p-10 text-base-content flex flex-col lg:flex-row justify-between">
           <nav className="mb-4 lg:mb-0 sm:mb-0">
             <header className="footer-title">Services</header>
@@ -43,7 +43,7 @@ const Footer = () => {
           </form>
         </footer>
       </div>
-      <div>
+      <div className="">
         <footer className="footer footer-center p-4 bg-base-300 text-base-content">
           <aside>
             <p>All rights reserved by EcoTechUniverse</p>

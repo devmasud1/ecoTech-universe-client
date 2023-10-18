@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-slate-200">
-      <div className="max-w-[1440px] mx-5 lg:mx-auto navbar">
+      <div className="max-w-[1440px] mx-5 lg:mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
