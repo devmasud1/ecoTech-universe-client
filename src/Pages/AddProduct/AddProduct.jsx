@@ -6,7 +6,7 @@ const AddProduct = () => {
 
     const image = form.image.value;
     const name = form.name.value;
-    const brand = form.type.value;
+    const brand = form.brand.value;
     const type = form.type.value;
     const description = form.description.value;
     const rating = form.rating.value;
@@ -21,7 +21,18 @@ const AddProduct = () => {
       rating,
       price,
     };
-    console.log(newProduct);
+
+    fetch(`https://eco-tech-universe-server-86ztqqszw-masudr.vercel.app/product`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
