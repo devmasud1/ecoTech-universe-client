@@ -8,9 +8,9 @@ const BrandItemDetails = () => {
 
   const ratingNum = parseFloat(rating);
 
-  const handleAddToCart = () =>{
-    
-  }
+  const handleAddToCart = (productDetailsData) => {
+    console.log(productDetailsData);
+  };
 
   return (
     <div className="max-w-[1440px] min-h-[55vh] mx-auto my-12">
@@ -39,7 +39,12 @@ const BrandItemDetails = () => {
             <img src={image} alt="" className="w-1/2 h-28 object-cover" />
           </div>
           <div className="pt-5">
-            <button className="btn btn-neutral" onClick={() => handleAddToCart()}>Add to Cart</button>
+            <button
+              className="btn btn-neutral"
+              onClick={() => handleAddToCart(productDetailsData)}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

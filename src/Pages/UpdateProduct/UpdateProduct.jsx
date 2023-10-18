@@ -1,9 +1,18 @@
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { BsArrow90DegLeft } from "react-icons/bs";
+
+const UpdateProduct = () => {
+  const navigate = useNavigate();
+  const productDetailsData = useLoaderData();
+
+  const { _id, name, image, brand, type, rating, price, description } =
+    productDetailsData || {};
+
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
 
     const form = e.target;
-
     const image = form.image.value;
     const name = form.name.value;
     const brand = form.brand.value;
@@ -12,7 +21,7 @@ const AddProduct = () => {
     const rating = form.rating.value;
     const price = form.price.value;
 
-    const newProduct = {
+    const updateProduct = {
       image,
       name,
       brand,
@@ -22,17 +31,23 @@ const AddProduct = () => {
       price,
     };
 
-    fetch(`https://eco-tech-universe-server.vercel.app/product`, {
-      method: "POST",
+    fetch(`https://eco-tech-universe-server.vercel.app/product/${_id}`, {
+      method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((result) => {
+        if (result.modifiedCount > 0) {
+          Swal.fire("Product successfully updated");
+        }
       });
+  };
+
+  const handlePre = () => {
+    navigate(-1);
   };
 
   return (
@@ -42,19 +57,28 @@ const AddProduct = () => {
         backgroundImage: `url(https://i.ibb.co/pwn6fvJ/addproductbg.jpg)`,
       }}
     >
+      <div className="max-w-[1440px] mx-auto">
+        <button
+          onClick={handlePre}
+          className="flex items-center gap-2 px-6 py-1 bg-slate-800 text-white my-3"
+        >
+          <BsArrow90DegLeft></BsArrow90DegLeft>
+          previous page
+        </button>
+      </div>
       <div className="bg-[#f4f3f0bd] max-w-[1440px] mx-auto py-10">
         <div className="w-full lg:w-1/2 mx-5 lg:mx-auto text-center">
           <h1 className="text-2xl lg:text-3xl font-bold text-[#374151] my-2 lg:my-4">
-            Add New Product
+            Update Product information
           </h1>
           <p className="text-[#374151]">
-            Unlock new horizons of possibilities with our Add Product feature.
-            Elevate your product offerings effortlessly, reaching a wider
-            audience with just a few clicks.
+            Updating product information typically refers to the process of
+            making changes or modifications to the details and attributes
+            associated with a specific product.
           </p>
         </div>
         <div className="w-full mx-auto my-5">
-          <form onSubmit={handleAddProduct} className="mx-5">
+          <form onSubmit={handleUpdateProduct} className="mx-5">
             <div className="flex flex-col gap-4 md:flex-row md:gap-8">
               <div className="w-full">
                 <label className="label">
@@ -65,7 +89,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="image"
-                    placeholder="Enter image url"
+                    defaultValue={image}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -82,7 +106,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="name"
-                    placeholder="Enter product name"
+                    defaultValue={name}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -96,7 +120,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="brand"
-                    placeholder="Enter product brand"
+                    defaultValue={brand}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -113,7 +137,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="type"
-                    placeholder="Enter product type"
+                    defaultValue={type}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -127,6 +151,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="description"
+                    defaultValue={description}
                     placeholder="Enter short description"
                     className="input input-bordered w-full"
                   />
@@ -144,7 +169,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="rating"
-                    placeholder="Enter product rating"
+                    defaultValue={rating}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -159,7 +184,7 @@ const AddProduct = () => {
                     required
                     type="text"
                     name="price"
-                    placeholder="Enter product price"
+                    defaultValue={price}
                     className="input input-bordered w-full"
                   />
                 </div>
@@ -170,7 +195,7 @@ const AddProduct = () => {
               <input
                 className="btn btn-block btn-neutral"
                 type="submit"
-                value="Add Product"
+                value="Update Product"
               />
             </div>
           </form>
@@ -180,4 +205,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

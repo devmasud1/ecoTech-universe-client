@@ -5,6 +5,7 @@ import MyCart from "../Pages/MyCart/MyCart";
 import Home from "../Pages/Home/Home";
 import BrandItems from "../Pages/Home/BrandItems";
 import BrandItemDetails from "../Pages/Home/BrandItemDetails";
+import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
 
 const Routes = createBrowserRouter([
   {
@@ -32,6 +33,11 @@ const Routes = createBrowserRouter([
         element: <BrandItemDetails></BrandItemDetails>,
         loader: ({params}) => fetch(`https://eco-tech-universe-server.vercel.app/product/${params.id}`),
       },
+      {
+        path:"/productUpdate/:id",
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({params}) => fetch(`https://eco-tech-universe-server.vercel.app/product/${params.id}`),
+      }
     ],
   },
 ]);
