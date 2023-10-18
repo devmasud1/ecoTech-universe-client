@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const BrandItems = () => {
   const [allProduct, setAllProduct] = useState([]);
@@ -27,6 +27,7 @@ const BrandItems = () => {
         {filterProduct.length ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 mx-5 lg:mx-0">
             {filterProduct.map((pd) => (
+             
               <div
                 className="flex flex-col lg:flex-row  gap-5 bg-base-100 shadow-xl"
                 key={pd._id}
@@ -46,7 +47,10 @@ const BrandItems = () => {
                   <p>Rating: {pd.rating}</p>
                   <p>Price: ${pd.price}</p>
                   <div className="flex items-center gap-5 py-4">
-                    <button className="btn btn-neutral">view details</button>
+                    <Link to={`/productDetails/${pd._id}`}>
+                      <button className="btn btn-neutral">view details</button>
+                    </Link>
+
                     <button className="btn btn-secondary">
                       update product
                     </button>
