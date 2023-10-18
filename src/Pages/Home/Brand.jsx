@@ -18,18 +18,16 @@ const Brand = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0 gap-8 lg:gap-10">
         {brandInfo.map((brand) => (
           <Link to={`/brandItem/${brand.brand}`} key={brand.id}>
-            {" "}
-            <div className="card card-compact  bg-base-100 shadow-xl">
-              <figure>
+            <div className="card card-compact bg-base-100 shadow-xl relative overflow-hidden">
+              <figure className="relative">
                 <img
                   src={brand.img}
                   alt="apple"
-                  className="w-full max-h-[200px] object-cover"
+                  className="w-full max-h-[200px] object-cover transition-transform transform scale-100 hover:scale-105"
                 />
               </figure>
-              <div className="card-body">
-                <h2 className="card-title">{brand.brand}</h2>
-                <div className="card-actions justify-end"></div>
+              <div className="w-36 text-center mx-auto absolute bottom-0 bg-slate-300">
+                <h2 className="text-xl font-semibold py-1">{brand.brand}</h2>
               </div>
             </div>
           </Link>
