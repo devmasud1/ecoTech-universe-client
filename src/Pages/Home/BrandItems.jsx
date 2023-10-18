@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { Link, useParams } from "react-router-dom";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import Pagination from "swiper/modules";
+
 const BrandItems = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [filterProduct, setFilterProduct] = useState([]);
@@ -22,6 +27,34 @@ const BrandItems = () => {
 
   return (
     <div>
+      <div className="h-[60vh] ">
+        <Swiper
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {filterProduct.map((pd) => (
+            <SwiperSlide
+              key={pd._id}
+              style={{ backgroundImage: `url(${pd.image})` }}
+            >
+              <div className="flex justify-center items-center h-full text-white ">
+                <div className="bg-slate-400 p-20">
+                  <h1 className="text-3xl lg:text-4xl mb-2">{pd.name}</h1>
+                  <h1 className="text-xl text-blue-100">
+                    <span className="text-3xl lg:text-4xl text-orange-200 font-bold">
+                      10%
+                    </span>{" "}
+                    Discount for all products
+                  </h1>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <div className="max-w-[1440px] min-h-[60vh] mx-auto my-10">
         {filterProduct.length ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 mx-5 lg:mx-0">
