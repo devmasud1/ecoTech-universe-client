@@ -1,8 +1,12 @@
-# React + Vite
+## EcoTechUniverse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live link] (https://eco-tech-universe.web.app/)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Project feature:
+
+- Users will be able to create an account.
+- Users will also be able to log in with Google.
+- Products can be added from the Add Product page.
+- You can see all the carts that have added products on the My Cart page.
+- Clicking on any brand on the home page will display data related to that brand.
