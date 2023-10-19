@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Brand = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const brandInfo = [
     { id: 1, brand: "Apple", img: "https://i.ibb.co/qkhmYV0/apple.jpg" },
     { id: 2, brand: "Samsung", img: "https://i.ibb.co/3zJZ8kR/samsung.jpg" },
@@ -18,7 +25,11 @@ const Brand = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0 gap-8 lg:gap-10">
         {brandInfo.map((brand) => (
           <Link to={`/brandItem/${brand.brand}`} key={brand.id}>
-            <div className="card card-compact bg-base-100 shadow-xl relative overflow-hidden">
+            <div
+              className="card card-compact bg-base-100 shadow-xl relative overflow-hidden"
+              data-aos="fade-up"
+              data-aos-duration="3000"
+            >
               <figure className="relative">
                 <img
                   src={brand.img}

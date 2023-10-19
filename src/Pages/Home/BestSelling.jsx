@@ -1,4 +1,11 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const BestSelling = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div className="max-w-[1440px] mx-auto my-10">
       <div className="mx-5 lg:mx-0">
@@ -7,7 +14,11 @@ const BestSelling = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-5 lg:mx-0 my-10 lg:my-12">
-        <div className="flex flex-col-reverse lg:flex-row  items-center bg-slate-50">
+        <div
+          className="flex flex-col-reverse lg:flex-row  items-center bg-slate-50"
+          data-aos="fade-up"
+          data-aos-duration="3000"
+        >
           <div className="w-full lg:w-1/2 text-black">
             <h2 className="text-3xl font-semibold mb-4 mx-3 mt-4 lg:mt-0">
               MacBook Pro
@@ -24,7 +35,11 @@ const BestSelling = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-slate-50 ">
+        <div
+          className="flex flex-col-reverse lg:flex-row items-center bg-slate-50 "
+          data-aos="fade-up"
+          data-aos-duration="3000"
+        >
           <div className="w-full lg:w-1/2 text-black">
             <h2 className="text-3xl font-semibold mb-4 mx-3 mt-4 lg:mt-0">
               iPad

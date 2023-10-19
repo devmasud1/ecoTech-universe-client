@@ -85,7 +85,7 @@ const BrandItems = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="w-1/2 p-4 space-y-2">
+                  <div className="w-full lg:w-1/2 p-2 lg:p-4 space-y-2">
                     <h2 className="text-xl font-medium">Brand: {pd.brand}</h2>
                     <p className="text-lg font-medium">Name: {pd.name}</p>
                     <p>Type: {pd.type}</p>

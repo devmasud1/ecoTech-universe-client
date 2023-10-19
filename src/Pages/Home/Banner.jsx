@@ -1,4 +1,12 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const Banner = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div
       className="h-[70vh] bg-cover relative"
@@ -7,7 +15,11 @@ const Banner = () => {
       }}
     >
       <div className="absolute inset-0 bg-black opacity-80"></div>
-      <div className="w-11/12 mx-auto text-white absolute inset-0 flex flex-col justify-center space-y-4 lg:w-2/3 xl:w-1/2">
+      <div
+        className="w-11/12 mx-auto text-white absolute inset-0 flex flex-col justify-center space-y-4 lg:w-2/3 xl:w-1/2"
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         <h1 className="text-3xl font-bold lg:text-4xl">
           <span className="text-4xl lg:text-5xl text-slate-300">Your Tech</span>{" "}
           <br />

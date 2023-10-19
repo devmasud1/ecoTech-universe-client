@@ -6,8 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, passwordErrMsg } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const handleUserRegister = (e) => {
     e.preventDefault();
@@ -19,7 +17,6 @@ const Register = () => {
     createUser(email, password, name)
       .then(() => {
         toast("User successfully created!", { type: "success" });
-        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         toast("Already use this email", { type: "error" });
