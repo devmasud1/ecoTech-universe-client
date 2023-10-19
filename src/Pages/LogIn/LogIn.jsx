@@ -1,13 +1,34 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../hook/Provider/AuthProvider";
 
 const LogIn = () => {
-  const handleGoogleLogIn = () => {};
+  const {logInUser, GoogleLogIn} = useContext(AuthContext);
+
+  const handleGoogleLogIn = () => {
+    GoogleLogIn()
+    .then(result => {
+      console.log(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  };
 
   const handleUserLogin = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
+    logInUser(email, password)
+    .then(result => {
+      const user = result.user;
+      console.log(user)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
   };
 
   return (

@@ -56,9 +56,13 @@ const MyCart = () => {
               </button>
             </div>
           ))}
-          <button className="btn btn-neutral mt-8" onClick={handleCheckOut}>
-            checkout
-          </button>
+          {cart.length ? (
+            <button className="btn btn-neutral mt-8" onClick={handleCheckOut}>
+              checkout
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
