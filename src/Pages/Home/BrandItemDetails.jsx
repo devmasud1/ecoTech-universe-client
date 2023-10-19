@@ -11,8 +11,6 @@ const BrandItemDetails = () => {
   const ratingNum = parseFloat(rating);
 
   const handleAddToCart = (productDetailsData) => {
-   // console.log(productDetailsData);
-
     fetch(`https://eco-tech-universe-server.vercel.app/cart`, {
       method: "POST",
       headers: {
@@ -23,7 +21,7 @@ const BrandItemDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire('product successfully added!')
+          Swal.fire("product successfully added!");
         }
       });
   };

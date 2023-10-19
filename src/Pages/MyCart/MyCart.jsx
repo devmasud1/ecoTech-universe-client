@@ -33,11 +33,12 @@ const MyCart = () => {
           {cart.map((item) => (
             <div key={item._id}>
               <h2>Product name: {item.name}</h2>
-              <button className="btn btn-neutral mt-8" onClick={handleCheckOut}>
-                checkout
-              </button>
+              
             </div>
           ))}
+          <button className="btn btn-neutral mt-8" onClick={handleCheckOut}>
+                checkout
+              </button>
         </div>
       </div>
     </div>
