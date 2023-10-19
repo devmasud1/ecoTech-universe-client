@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../hook/Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,10 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 const LogIn = () => {
   const { logInUser, GoogleLogIn } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleGoogleLogIn = () => {
     GoogleLogIn()
       .then(() => {
         toast("log in success", { type: "success" });
+
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         toast("something wrong", { type: "error" });
@@ -25,6 +30,7 @@ const LogIn = () => {
     logInUser(email, password)
       .then(() => {
         toast("log in success", { type: "success" });
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         toast("something wrong", { type: "error" });

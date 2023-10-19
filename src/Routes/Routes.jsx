@@ -9,6 +9,7 @@ import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
 import LogIn from "../Pages/LogIn/LogIn";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -22,11 +23,19 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myCart",
-        element: <MyCart></MyCart>,
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/brandItem/:brand",
@@ -34,22 +43,36 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/productDetails/:id",
-        element: <BrandItemDetails></BrandItemDetails>,
-        loader: ({params}) => fetch(`https://eco-tech-universe-server.vercel.app/product/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <BrandItemDetails></BrandItemDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://eco-tech-universe-server.vercel.app/product/${params.id}`
+          ),
       },
       {
-        path:"/productUpdate/:id",
-        element: <UpdateProduct></UpdateProduct>,
-        loader: ({params}) => fetch(`https://eco-tech-universe-server.vercel.app/product/${params.id}`),
+        path: "/productUpdate/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://eco-tech-universe-server.vercel.app/product/${params.id}`
+          ),
       },
       {
-        path:"/logIn",
-        element:<LogIn></LogIn>
+        path: "/logIn",
+        element: <LogIn></LogIn>,
       },
       {
-        path:"/register",
-        element:<Register></Register>
-      }
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
 ]);

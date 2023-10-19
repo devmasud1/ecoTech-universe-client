@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../hook/Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, passwordErrMsg } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleUserRegister = (e) => {
     e.preventDefault();
@@ -16,10 +18,11 @@ const Register = () => {
 
     createUser(email, password, name)
       .then(() => {
-        toast("successfully create account", { type: "success" });
+        toast("User successfully created!", { type: "success" });
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
-        toast("something wrong", { type: "error" });
+        toast("Already use this email", { type: "error" });
       });
     e.target.name.value = "";
     e.target.email.value = "";
