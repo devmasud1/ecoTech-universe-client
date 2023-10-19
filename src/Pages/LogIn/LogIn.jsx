@@ -1,18 +1,20 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../hook/Provider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LogIn = () => {
-  const {logInUser, GoogleLogIn} = useContext(AuthContext);
+  const { logInUser, GoogleLogIn } = useContext(AuthContext);
 
   const handleGoogleLogIn = () => {
     GoogleLogIn()
-    .then(result => {
-      console.log(result)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(() => {
+        toast("log in success", { type: "success" });
+      })
+      .catch(() => {
+        toast("something wrong", { type: "error" });
+      });
   };
 
   const handleUserLogin = (e) => {
@@ -21,14 +23,14 @@ const LogIn = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     logInUser(email, password)
-    .then(result => {
-      const user = result.user;
-      console.log(user)
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+      .then(() => {
+        toast("log in success", { type: "success" });
+      })
+      .catch(() => {
+        toast("something wrong", { type: "error" });
+      });
+    e.target.email.value = "";
+    e.target.password.value = "";
   };
 
   return (
@@ -36,6 +38,7 @@ const LogIn = () => {
       className="hero h-[65vh]"
       style={{ backgroundImage: "url(https://i.ibb.co/NtZwvJq/logIn.jpg)" }}
     >
+      <ToastContainer />
       <div className="hero-overlay bg-opacity-95"></div>
       <div className="hero-content">
         <div className="w-full">

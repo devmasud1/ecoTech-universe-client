@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
@@ -20,10 +21,29 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [passwordErrMsg, setPasswordErrMsg] = useState([]);
 
-  const createUser = (email, password) => {
+  const createUser = (email, password, name) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    if (password.length <= 6) {
+      return setPasswordErrMsg("Password must be at least 6 characters.");
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      return setPasswordErrMsg("Password at least one capital letter.");
+    }
+
+    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+      return setPasswordErrMsg("Password at least one special character.");
+    }
+    setPasswordErrMsg("");
+    return createUserWithEmailAndPassword(auth, email, password, name).then(
+      () => {
+        return updateProfile(auth.currentUser, {
+          displayName: name,
+        });
+      }
+    );
   };
   const logInUser = (email, password) => {
     setLoading(true);
@@ -58,6 +78,7 @@ const AuthProvider = ({ children }) => {
     logInUser,
     GoogleLogIn,
     logOutUser,
+    passwordErrMsg,
   };
 
   return (

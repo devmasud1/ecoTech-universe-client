@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../hook/Provider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, passwordErrMsg } = useContext(AuthContext);
 
   const handleUserRegister = (e) => {
     e.preventDefault();
@@ -11,27 +13,31 @@ const Register = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name , email, password)
 
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+    createUser(email, password, name)
+      .then(() => {
+        toast("successfully create account", { type: "success" });
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      .catch(() => {
+        toast("something wrong", { type: "error" });
       });
+    e.target.name.value = "";
+    e.target.email.value = "";
+    e.target.password.value = "";
   };
   return (
     <div
       className="hero h-[65vh]"
       style={{ backgroundImage: "url(https://i.ibb.co/SXLqYFq/register.jpg)" }}
     >
+      <ToastContainer />
       <div className="hero-overlay bg-opacity-95"></div>
       <div className="hero-content">
         <div className="w-full">
           <form onSubmit={handleUserRegister} className="card-body">
+            <div className="text-white">
+              {passwordErrMsg ? passwordErrMsg : ""}
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-white text-lg">Name</span>
@@ -39,6 +45,7 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
+                required
                 placeholder="Your name"
                 className="input input-bordered"
               />
