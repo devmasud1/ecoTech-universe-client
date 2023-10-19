@@ -27,7 +27,9 @@ const Brand = () => {
                 />
               </figure>
               <div className="w-36 text-center mx-auto absolute bottom-0 bg-slate-300">
-                <h2 className="text-xl font-semibold py-1">{brand.brand}</h2>
+                <h2 className="text-xl font-semibold py-1 text-black">
+                  {brand.brand}
+                </h2>
               </div>
             </div>
           </Link>

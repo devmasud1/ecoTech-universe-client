@@ -7,8 +7,8 @@ const BestSelling = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-5 lg:mx-0 my-10 lg:my-12">
-        <div className="flex flex-col-reverse lg:flex-row  items-center bg-slate-400">
-          <div className="w-full lg:w-1/2">
+        <div className="flex flex-col-reverse lg:flex-row  items-center bg-slate-50">
+          <div className="w-full lg:w-1/2 text-black">
             <h2 className="text-3xl font-semibold mb-4 mx-3 mt-4 lg:mt-0">
               MacBook Pro
             </h2>
@@ -24,8 +24,8 @@ const BestSelling = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col-reverse lg:flex-row items-center bg-slate-300 ">
-          <div className="w-full lg:w-1/2">
+        <div className="flex flex-col-reverse lg:flex-row items-center bg-slate-50 ">
+          <div className="w-full lg:w-1/2 text-black">
             <h2 className="text-3xl font-semibold mb-4 mx-3 mt-4 lg:mt-0">
               iPad
             </h2>

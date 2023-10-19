@@ -36,17 +36,17 @@ const MyCart = () => {
 
   return (
     <div
-      className="hero min-h-[65vh]"
+      className="hero min-h-[70vh]"
       style={{ backgroundImage: "url(https://i.ibb.co/gtfTn4j/bg.jpg)" }}
     >
       <div className="hero-overlay bg-opacity-40"></div>
-      <div className="hero-content text-center   bg-blue-100">
+      <div className="hero-content text-center bg-blue-100">
         <div className="max-w-md min-h-60 p-8">
-          <h1 className="mb-5 text-3xl font-bold">
+          <h1 className="mb-5 text-3xl font-bold text-black">
             Total added item : {cart.length}
           </h1>
           {cart.map((item) => (
-            <div key={item._id} className="flex items-center gap-2 space-y-2">
+            <div key={item._id} className="flex items-center gap-2 space-y-2 text-black">
               <h2>Product name: {item.name}</h2>
               <button
                 onClick={() => handleCartDelete(item._id)}

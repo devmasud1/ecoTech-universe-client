@@ -4,11 +4,10 @@ import { BsArrow90DegLeft } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 const BrandItemDetails = () => {
-  const navigate = useNavigate();
-
   const productDetailsData = useLoaderData();
   const { name, image, rating, price, description } = productDetailsData || {};
   const ratingNum = parseFloat(rating);
+  const navigate = useNavigate();
 
   const handleAddToCart = (productDetailsData) => {
     fetch(`https://eco-tech-universe-server.vercel.app/cart`, {
@@ -21,7 +20,7 @@ const BrandItemDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire("product successfully added!");
+          Swal.fire("success!", "product successfully added!.", "success");
         }
       });
   };
@@ -32,21 +31,21 @@ const BrandItemDetails = () => {
 
   return (
     <div>
-      <div className="max-w-[1440px] mx-auto">
+      <div className="max-w-[1440px] mx-auto my-8">
         <button
           onClick={handlePre}
-          className="flex items-center gap-2 px-6 py-1 bg-slate-800 text-white my-7"
+          className="flex items-center gap-2 px-6 py-1 bg-slate-800 text-white my-3"
         >
           <BsArrow90DegLeft></BsArrow90DegLeft>
           previous page
         </button>
       </div>
-      <div className="max-w-[1440px] min-h-[55vh] mx-auto my-4">
+      <div className="max-w-[1440px] min-h-[60vh] mx-auto my-4">
         <div className="flex flex-col lg:flex-row mx-5 lg:mx-0  gap-10">
-          <div className="w-full lg:w-1/2">
-            <img src={image} alt="" />
+          <div className="w-full lg:w-1/2 h-full">
+            <img src={image} alt="" className="h-full" />
           </div>
-          <div className="w-full lg:w-1/2 bg-slate-100 p-5 space-y-4">
+          <div className="w-full lg:w-1/2 bg-slate-50 text-black p-5 space-y-4">
             <h2 className="text-xl lg:text-2xl font-medium">{name}</h2>
             <p>
               <Rating
