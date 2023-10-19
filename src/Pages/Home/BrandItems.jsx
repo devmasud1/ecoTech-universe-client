@@ -48,7 +48,7 @@ const BrandItems = () => {
                 }}
               >
                 <div className="flex justify-center items-center h-full text-blue-800">
-                  <div className="bg-slate-400 bg-opacity-50 p-10 sm:p-12 md:p-16">
+                  <div className="bg-slate-50 bg-opacity-70 p-10 sm:p-12 md:p-16">
                     <h1 className="text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2">
                       {pd.name}
                     </h1>
@@ -85,9 +85,9 @@ const BrandItems = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="w-1/2 p-4 text-lg space-y-2">
-                    <h2>Brand: {pd.brand}</h2>
-                    <p>Name: {pd.name}</p>
+                  <div className="w-1/2 p-4 space-y-2">
+                    <h2 className="text-xl font-medium">Brand: {pd.brand}</h2>
+                    <p className="text-lg font-medium">Name: {pd.name}</p>
                     <p>Type: {pd.type}</p>
                     <p>
                       <Rating
@@ -103,13 +103,13 @@ const BrandItems = () => {
 
                     <div className="flex flex-col lg:flex-row w-full items-center gap-5 pt-5">
                       <Link to={`/productDetails/${pd._id}`} className="w-full">
-                        <button className="btn btn-neutral">
+                        <button className="btn btn-neutral text-xs">
                           view details
                         </button>
                       </Link>
 
                       <Link to={`/productUpdate/${pd._id}`} className="w-full">
-                        <button className="btn btn-accent">
+                        <button className="btn btn-accent text-xs">
                           update product
                         </button>
                       </Link>
