@@ -2,14 +2,28 @@ import Rating from "react-rating";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../hook/Provider/AuthProvider";
 
 const BrandItemDetails = () => {
+  
+  const { user } = useContext(AuthContext);
+  const userEmail = user.email;
+  
   const productDetailsData = useLoaderData();
   const { name, image, rating, price, description } = productDetailsData || {};
   const ratingNum = parseFloat(rating);
   const navigate = useNavigate();
 
+
   const handleAddToCart = (productDetailsData) => {
+
+    productDetailsData = {
+      ...productDetailsData,
+      userEmail: userEmail,
+    };
+  
+
     fetch(`https://eco-tech-universe-server.vercel.app/cart`, {
       method: "POST",
       headers: {

@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../hook/Provider/AuthProvider";
 
 const MyCart = () => {
   const [cart, setCart] = useState([]);
+  const { user } = useContext(AuthContext);
+  const loginEmail = user.email;
 
   useEffect(() => {
     fetch(`https://eco-tech-universe-server.vercel.app/carts`)
       .then((res) => res.json())
       .then((result) => {
-        setCart(result);
+        const userCart = result.filter((item) => item.userEmail === loginEmail);
+        setCart(userCart);
       });
-  }, []);
+  }, [loginEmail]);
 
   const handleCheckOut = () => {
     Swal.fire({
@@ -42,11 +46,14 @@ const MyCart = () => {
       <div className="hero-overlay bg-opacity-40"></div>
       <div className="hero-content text-center bg-blue-100">
         <div className="max-w-md min-h-60 p-8">
-          <h1 className="mb-5 text-3xl font-bold text-black">
+          <h1 className="mb-5 text-xl lg:text-3xl font-bold text-black">
             Total added item : {cart.length}
           </h1>
           {cart.map((item) => (
-            <div key={item._id} className="flex items-center gap-2 space-y-2 text-black">
+            <div
+              key={item._id}
+              className="flex items-center gap-2 space-y-2 text-black"
+            >
               <h2>Product name: {item.name}</h2>
               <button
                 onClick={() => handleCartDelete(item._id)}

@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [passwordErrMsg, setPasswordErrMsg] = useState([]);
 
+
   const createUser = (email, password, name) => {
     setLoading(true);
     if (password.length <= 6) {
