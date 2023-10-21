@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { Link, useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Loading from "../Loading/Loading";
 
 const BrandItems = () => {
@@ -30,18 +28,12 @@ const BrandItems = () => {
   return (
     <div>
       {filterProduct.length ? (
-        <div className="h-[70vh]">
-          <Swiper
-            pagination={{
-              dynamicBullets: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
+        <div className="h-[65vh]">
+          <Carousel showThumbs={false} infiniteLoop autoPlay interval={2000}>
             {filterProduct.map((pd) => (
-              <SwiperSlide
+              <div
                 key={pd._id}
-                className="bg-center bg-cover"
+                className="bg-center bg-cover h-[65vh]"
                 style={{
                   backgroundImage: `url(${pd.image})`,
                   backgroundSize: "cover",
@@ -60,15 +52,15 @@ const BrandItems = () => {
                     </h1>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </Carousel>
         </div>
       ) : (
         ""
       )}
       {isLoading ? (
-        <Loading></Loading>
+        <Loading />
       ) : (
         <div className="max-w-[1440px] min-h-[60vh] mx-auto my-10">
           {filterProduct.length ? (
